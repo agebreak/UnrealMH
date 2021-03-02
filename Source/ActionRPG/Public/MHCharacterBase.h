@@ -4,10 +4,11 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
+#include "../EventManager.h"
 #include "MHCharacterBase.generated.h"
 
 UCLASS(config=Game)
-class AMHCharacterBase : public ACharacter
+class AMHCharacterBase : public ACharacter, public IEventHandler
 {
 	GENERATED_BODY()
 

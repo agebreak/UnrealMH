@@ -4,11 +4,12 @@
 
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
+#include "../EventManager.h"
 #include "SkillSystemComponent.generated.h"
 
 
 UCLASS(BlueprintType, Blueprintable, ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
-class ACTIONRPG_API USkillSystemComponent : public UActorComponent 
+class ACTIONRPG_API USkillSystemComponent : public UActorComponent, public IEventHandler 
 {
 	GENERATED_BODY()
 
@@ -22,7 +23,9 @@ protected:
 
 public:	
 	// Called every frame
-	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
+	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;	
 
+protected: 
+	bool bIsAttackHit = false; 
 		
 };

@@ -10,7 +10,16 @@ USkillSystemComponent::USkillSystemComponent()
 	// off to improve performance if you don't need them.
 	PrimaryComponentTick.bCanEverTick = true;
 
-	// ...
+	Bind(EEventID::ACTOR_IS_HIT).BindLambda([this](FMHEvent * Event) {
+		auto pEvent = (EventIsAttackHit*)Event;
+		pEvent->IsAttackHit = bIsAttackHit;
+	});
+
+	Bind(EEventID::ACTOR_SET_HIT).BindLambda([this](FMHEvent * Event) {
+		auto pEvent = (EventSetAttackHit*)Event; 
+		bIsAttackHit = pEvent->IsAttackHit;
+	});
+											
 }
 
 

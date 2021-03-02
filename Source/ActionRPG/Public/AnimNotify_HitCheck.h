@@ -16,4 +16,16 @@ class ACTIONRPG_API UAnimNotify_HitCheck : public UAnimNotify
 
 public:
 	virtual void Notify(USkeletalMeshComponent* MeshComp, UAnimSequenceBase* Animation);	
+
+public:	
+	// 히트체크 시작 위치. 오브젝트 좌표계
+	UPROPERTY(EditAnywhere)
+	FVector StartOffset;  
+
+	// 히트체크 끝 위치. Start에서 더해지는 오프셋
+	UPROPERTY(EditAnywhere)
+	FVector EndOffset;
+
+	UPROPERTY(EditAnywhere)
+	float Radius = 10.0f; 
 };
